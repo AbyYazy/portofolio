@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio of Cybersecurity byy</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --accent-color: #00f2fe;
+            --text-color: #c9d1d9;
+            --text-heading: #ffffff;
+            --border-color: #30363d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: rgba(22, 27, 34, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            font-family: monospace;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10%;
+            margin-top: 2rem;
+            gap: 2rem;
+        }
+
+        .hero-text {
+            max-width: 55%;
+        }
+
+        .hero-image {
+            max-width: 40%;
+            width: 100%;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+        }
+
+        .hero p.tag {
+            color: var(--accent-color);
+            font-family: monospace;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            color: var(--text-heading);
+            margin-bottom: 1rem;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            color: #8b949e;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--accent-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+        }
+
+        /* Section Layout */
+        section {
+            padding: 5rem 10%;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--text-heading);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
+            margin-top: 8px;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card h3 {
+            color: var(--text-heading);
+            margin-bottom: 0.8rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .tag-item {
+            font-size: 0.8rem;
+            background: #21262d;
+            color: var(--accent-color);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        /* Certifications & Badges */
+        .cert-list {
+            list-style: none;
+        }
+
+        .cert-item {
+            background: var(--card-bg);
+            padding: 1rem 1.5rem;
+            border-left: 3px solid var(--accent-color);
+            margin-bottom: 1rem;
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .cert-item-content {
+            flex: 1;
+        }
+
+        .cert-item-image {
+            flex-shrink: 0;
+            width: 120px;
+            height: 120px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: var(--bg-color);
+        }
+
+        .cert-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Certification Carousel */
+        .cert-carousel {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            background: var(--card-bg);
+        }
+
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .carousel-slide img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .carousel-btn {
+            background: var(--accent-color);
+            color: var(--bg-color);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .carousel-btn:hover {
+            background: #00d4e8;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-color);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator.active {
+            background: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0 5%;
+                text-align: left;
+            }
+
+            .hero-text,
+            .hero-image {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .hero-image {
+                margin-top: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero h2 { font-size: 1.3rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">&lt;SOC_Analyst /&gt;</div>
+        <ul class="nav-links">
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#skills">Keahlian</a></li>
+            <li><a href="#projects">Proyek & Lab</a></li>
+            <li><a href="#certs">Sertifikasi</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-text">
+            <p class="tag">Welcome to my portfolio</p>
+            <h1>Aby Yazy Wijaya</h1>
+            <h2>Cybersecurity Specialist in SOC Analyst</h2>
+            <p style="max-width: 600px; margin-bottom: 2rem;">
+                Fokus pada pemantauan dan analisis security alert, melakukan alert triage untuk mengidentifikasi potensi ancaman, serta menyusun reporting keamanan yang akurat guna mendukung respons dan pengambilan keputusan terhadap insiden siber.
+            </p>
+            <a href="#projects" class="btn"><i class="fas fa-terminal"></i> Lihat Proyek</a>
+        </div>
+        <div class="hero-image">
+            <img src="byy.png" alt="Foto Aby Yazy Wijaya">
+        </div>
+    </header>
+
+    <section id="about">
+        <h2 class="section-title">Tentang Saya</h2>
+        <p>
+            Saya adalah praktisi dan pembelajar aktif di bidang Cybersecurity dengan fokus pada Security Operations Center (SOC). Memiliki ketertarikan dalam pemantauan dan analisis security alert, melakukan alert triage untuk mengidentifikasi potensi ancaman, serta menganalisis lalu lintas jaringan guna mendukung proses deteksi dan respons terhadap insiden keamanan. Saya juga memiliki pemahaman dalam network security, vulnerability assessment, dan penyusunan security reporting.
+        </p>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Keahlian & Toolkit</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fas fa-network-wired"></i>
+                <h3>Network Security</h3>
+                <p>Wireshark, Cisco Packet Tracer, Subnetting, EIGRP/OSPF</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-bug"></i>
+                <h3>Pentesting</h3>
+                <p>Nmap, Burp Suite, Metasploit, Vulnerability Assessment</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-database"></i>
+                <h3>Database & SQL</h3>
+                <p>MySQL, SQL Injection Defense, Relational Security</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-code"></i>
+                <h3>Scripting</h3>
+                <p>Python, Bash Automation, Linux CLI</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Proyek & Writeups</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <div>
+                    <h3>Network Traffic Analysis Lab</h3>
+                    <p>Menganalisis file PCAP untuk mengidentifikasi aktivitas berbahaya, ekstraksi kredensial tidak terenkripsi, dan pemetaan pola serangan DDoS.</p>
+                    <div class="project-tags">
+                        <span class="tag-item">Wireshark</span>
+                        <span class="tag-item">PCAP Analysis</span>
+                        <span class="tag-item">Blue Team</span>
+                    </div>
+                </div>
+                <a href="#" class="btn" style="text-align: center; margin-top: 1rem;">Lihat Detail</a>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <h3>Automated Vulnerability Scanner</h3>
+                    <p>Skrip Python kustom untuk melakukan pemindaian port otomatis, deteksi layanan terbuka, dan pengujian kelemahan konfigurasi dasar.</p>
+                    <div class="project-tags">
+                        <span class="tag-item">Python</span>
+                        <span class="tag-item">Nmap API</span>
+                        <span class="tag-item">Automation</span>
+                    </div>
+                </div>
+                <a href="#" class="btn" style="text-align: center; margin-top: 1rem;">Lihat Repository</a>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <h3>Secure Database & ERD Design</h3>
+                    <p>Perancangan skema basis data relational dan Logical Record Structure (LRS) dengan kontrol akses pengguna berbasis aturan keamanaan.</p>
+                    <div class="project-tags">
+                        <span class="tag-item">SQL</span>
+                        <span class="tag-item">ERD/LRS</span>
+                        <span class="tag-item">Data Privacy</span>
+                    </div>
+                </div>
+                <a href="#" class="btn" style="text-align: center; margin-top: 1rem;">Lihat Dokumentasi</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="certs">
+        <h2 class="section-title">Sertifikasi & Benchmark</h2>
+        <ul class="cert-list">
+            <li class="cert-item">
+                <div class="cert-item-content">
+                    <div>
+                        <strong>Cyber Academy - Introduction to Information Security</strong>
+                        <p style="font-size: 0.9rem; color: #8b949e; margin-top: 0.3rem;">Completed on September 15, 2025</p>
+                    </div>
+                </div>
+                <div class="cert-item-image">
+                     <a href="Certificate-of-Completion-Introduction-to-Information-Security_page-0001.jpg" target="_blank"></a>
+                    <img src="Certificate-of-Completion-Introduction-to-Information-Security_page-0001.jpg" alt="Cyber Academy Certificate">
+                    </div>
+                </div>
+            </li>
+            <li class="cert-item">
+                <div class="cert-item-content">
+                    <div>
+                        <strong>JagoanSiber - SOC for Beginner: From Zero to Cyber Defender</strong>
+                        <p style="font-size: 0.9rem; color: #8b949e; margin-top: 0.3rem;">Completed on February 17, 2026</p>
+                    </div>
+                </div>
+                <div class="cert-item-image">
+                     <a href="certif soc for beginner byy_page-0001.jpg" target="_blank"></a>
+                    <img src="certif soc for beginner byy_page-0001.jpg" alt="JagoanSiber Certificate">
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <section id="contact" style="text-align: center;">
+        <h2 class="section-title" style="display: inline-block;">Mari Terhubung</h2>
+        <p style="margin: 1.5rem 0;">Tertarik untuk berkolaborasi atau berdiskusi seputar dunia keamanan siber?</p>
+        <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; font-size: 1.8rem;">
+            <a href="https://github.com/AbyYazy" target="_blank" rel="noopener noreferrer" aria-label="GitHub AbyYazy" style="color: var(--text-color);"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/aby-yazy-w-466773380/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn AbyYazy" style="color: var(--text-color);"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/bagoloe/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="color: var(--text-color);"><i class="fab fa-instagram"></i></a>
+        </div>
+        <a href="https://wa.me/6289525134011" target="_blank" rel="noopener noreferrer" class="btn">Kirim Pesan</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Aby Yazy W. Dioptimalkan untuk kecepatan dan keamanan.</p>
+    </footer>
+
+</body>
+</html>
