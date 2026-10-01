@@ -42,3 +42,22 @@ Command yang digunakan:
 ```bash
 curl -sO https://packages.wazuh.com/4.14/wazuh-install.sh
 sudo bash ./wazuh-install.sh -a
+
+2. 🔍 File Integrity Monitoring (FIM)
+
+File Integrity Monitoring (FIM) digunakan untuk mendeteksi perubahan,
+penambahan, dan penghapusan file pada endpoint Windows.
+
+FIM Test Results
+
+| Test | File | Event | Rule ID | Level | Status |
+|---|---|---|---:|---:|---|
+| Modify | C:\Wazuh-Test\wazuh-test.txt | Modified | 550 | 7 | ✅ Detected |
+| Create | C:\Wazuh-Test\wazuh-create-test.txt | Added | 554 | 5 | ✅ Detected |
+| Delete | C:\Wazuh-Test\wazuh-create-test.txt | Deleted | 553 | 7 | ✅ Detected |
+
+FIM Evidence
+
+- fim-modified.jpg — Deteksi perubahan file
+- fim-added.jpg — Deteksi penambahan file
+- fim-deleted.jpg — Deteksi penghapusan file
